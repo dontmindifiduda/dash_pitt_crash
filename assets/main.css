@@ -1,0 +1,287 @@
+.selector-group {
+  margin-bottom: 30px;
+}
+
+.control-card {
+  padding:  20px;
+}
+
+/* kmodes menu */
+
+.dropdown-kmodes {
+  color:  #000;
+}
+
+.dropdown-kmodes .Select-control {
+  color: #000;
+  background-color: #F7A274;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-kmodes .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-kmodes .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* collision menu */
+
+.dropdown-collision {
+  color:  #000;
+}
+
+.dropdown-collision .Select-control {
+  color: #000;
+  background-color: #FACF81;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-collision .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-collision .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+/* condition menu */
+
+.dropdown-condition {
+  color:  #000;
+}
+
+.dropdown-condition .Select-control {
+  color: #000;
+  background-color: #ADC18E;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-condition .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-condition .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* illumination menu */
+
+.dropdown-illumination {
+  color:  #000;
+}
+
+.dropdown-illumination .Select-control {
+  color: #000;
+  background-color: #B7D7E8;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-illumination .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-illumination .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+/* relation menu */
+
+.dropdown-relation {
+  color:  #000;
+}
+
+.dropdown-relation .Select-control {
+  color: #000;
+  background-color: #C2BCE5;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-relation .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-relation .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+/* injury menu */
+
+.dropdown-injury {
+  color:  #000;
+}
+
+.dropdown-injury .Select-control {
+  color: #000;
+  background-color: #FFADAC;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dropdown-injury .Select--multi .Select-value {
+  color: #000;
+  border-color: #000;
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dropdown-injury .Select-placeholder {
+  color: #000;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+
+
+/* background of dropdown
+
+.dropdown-kmodes .Select-menu-outer {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #222;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-top-color: transparent;
+  box-shadow: none;
+  color: #fff;
+} */
+
+
+
+
+/*.dash-bootstrap .Select-control {
+  height: calc(1.5em + 0.75rem + 2px);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #222;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-bootstrap .Select-control {
+    transition: none;
+  }
+}
+
+.dash-bootstrap .Select-control:hover {
+  box-shadow: none;
+}
+
+.dash-bootstrap .is-open > .Select-control {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.dash-bootstrap .is-focused:not(.is-open) > .Select-control {
+  border-color: #aaa;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(55, 90, 127, 0.25);
+}
+
+.dash-bootstrap .Select.is-disabled > .Select-control {
+  background-color: #ebebeb;
+}
+
+.dash-bootstrap .Select--multi .Select-value {
+  border-radius: 0.125rem;
+  color: #eee;
+  border-color: rgba(200, 200, 200, 0.25);
+  background-color: rgba(55, 55, 55, 0.1);
+}
+
+.dash-bootstrap .Select--multi .Select-value-icon:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.dash-bootstrap .Select--multi .Select-value-icon {
+  border-right-color: rgba(55, 55, 55, 0.25);
+}
+
+.dash-bootstrap .has-value.Select--single > .Select-control .Select-value .Select-value-label,
+.dash-bootstrap .has-value.is-pseudo-focused.Select--single > .Select-control .Select-value .Select-value-label {
+  color: #444;
+}
+
+.dash-bootstrap .Select-multi-value-wrapper {
+  height: calc(1.5em + 0.75rem);
+}
+
+.dash-bootstrap .Select-placeholder {
+  color: #999;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.dash-bootstrap .Select--single > .Select-control .Select-value,
+.dash-bootstrap .Select-placeholder {
+  line-height: calc(1.5em + 0.75rem);
+}
+
+.dash-bootstrap .Select-input {
+  height: calc(1.5em + 0.75rem);
+}
+
+.dash-bootstrap .Select-menu-outer {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  background-color: #222;
+  background-clip: padding-box;
+  border: 1px solid #444;
+  border-top-color: transparent;
+  box-shadow: none;
+  color: #fff;
+}
+
+.dash-bootstrap .VirtualizedSelectOption {
+  height: calc(1.5em + 0.75rem) !important;
+}
+
+.dash-bootstrap .VirtualizedSelectFocusedOption {
+  background-color: rgba(55, 90, 127, 0.1) !important;
+}*/
