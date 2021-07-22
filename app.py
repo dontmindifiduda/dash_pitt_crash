@@ -474,15 +474,11 @@ app.layout = dbc.Container(
 )
 
 
+
 # Define callback functions
+# Update geo map
 @app.callback(
     Output('crash-map', component_property='figure'),
-    Output('crash-heat', component_property='figure'),
-    Output('bar-plot-illumination', component_property='figure'),
-    Output('bar-plot-collision', component_property='figure'),
-    Output('bar-plot-condition', component_property='figure'),
-    Output('bar-plot-relation', component_property='figure'),
-    Output('bar-plot-injury', component_property='figure'),
     [
         Input('map-type', component_property='value'),
         Input('cluster-dropdown', component_property='value'),
@@ -498,17 +494,17 @@ app.layout = dbc.Container(
         State('crash-map', component_property='relayoutData')
     ],
 )
+def update_geo_map(map_type, cluster_number, collision_type, 
+                   road_condition, illumination, relation, 
+                   injury, year_range, month_range, 
+                   highlight, active_tab, map_figure):
 
-def update_map(map_type, cluster_number, collision_type, 
-               road_condition, illumination, relation, 
-               injury, year_range, month_range, 
-               highlight, active_tab, map_figure):
     try:
         current_zoom = (map_figure['mapbox.zoom'])
         current_center_lat = (map_figure['mapbox.center']['lat'])
         current_center_lon = (map_figure['mapbox.center']['lon'])
     except:
-        current_zoom = 11
+        current_zoom = 10
         current_center_lat = CENTER_LAT
         current_center_lon = CENTER_LON
 
@@ -567,21 +563,35 @@ def update_map(map_type, cluster_number, collision_type,
         fig.update_layout(
             margin=dict(l=20, r=20, t=20, b=20),
         )
-    
-    day_hour_heatmap = generate_heatmap(df)
-    
-    if day_hour_heatmap.shape[0] < 7 or day_hour_heatmap.shape[1] < 2:
-        heat_fig = FIG_NONE 
-    else: 
-        heat_fig = px.imshow(day_hour_heatmap,
-                             labels=dict(x="Time of Day", y="Day of Week", color='# of Accidents'),
-                             x=[str(int(x[1])) for x in day_hour_heatmap.columns.values],
-                             y=list(map(day_dict.get, day_hour_heatmap.index.values))
-                            )
+    return fig
 
-        heat_fig.update_layout(
-            margin=dict(l=20, r=20, t=20, b=20)
-        )
+# Update bar plots 
+@app.callback(
+    Output('bar-plot-illumination', component_property='figure'),
+    Output('bar-plot-collision', component_property='figure'),
+    Output('bar-plot-condition', component_property='figure'),
+    Output('bar-plot-relation', component_property='figure'),
+    Output('bar-plot-injury', component_property='figure'),
+    [
+        Input('cluster-dropdown', component_property='value'),
+        Input('collision-type', component_property='value'),
+        Input('road-condition', component_property='value'),
+        Input('illumination', component_property='value'),
+        Input('relation', component_property='value'),
+        Input('injury', component_property='value'),
+        Input('year-slider', component_property='value'),
+        Input('month-slider', component_property='value'),
+        Input('highlight-dropdown', component_property='value'),
+        Input('tabs', 'active_tab'),
+    ],
+)
+def update_bar(cluster_number, collision_type, 
+               road_condition, illumination, relation, 
+               injury, year_range, month_range, 
+               highlight, active_tab):
+
+    df = get_data(cluster_number, collision_type, road_condition, illumination, relation, 
+                  injury, year_range, month_range, highlight)
  
     if df.shape[0] < 2:
         bar_illum_fig = FIG_NONE
@@ -616,13 +626,74 @@ def update_map(map_type, cluster_number, collision_type,
                              x_label_dict=injury_dict,
                              color_map=injury_color_map)
         
-    bar_illum_fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
-    bar_collision_fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
-    bar_condition_fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
-    bar_relation_fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
-    bar_injury_fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
+    bar_illum_fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        yaxis=dict(tickfont=dict(size=10))
+    )
+    bar_illum_fig.layout.height = MAP_PANEL_HEIGHT*1.5
+    bar_collision_fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        yaxis=dict(tickfont=dict(size=10))
+    )
+    bar_collision_fig.layout.height = MAP_PANEL_HEIGHT*1.5
+    bar_condition_fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        yaxis=dict(tickfont=dict(size=10)),
+    )
+    bar_condition_fig.layout.height = MAP_PANEL_HEIGHT*1.5
+    bar_relation_fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        yaxis=dict(tickfont=dict(size=10)),
+    )
+    bar_relation_fig.layout.height = MAP_PANEL_HEIGHT*1.5
+    bar_injury_fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        yaxis=dict(tickfont=dict(size=10))
+    )
+    bar_injury_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     
-    return fig, heat_fig, bar_illum_fig, bar_collision_fig, bar_condition_fig, bar_relation_fig, bar_injury_fig
+    return bar_illum_fig, bar_collision_fig, bar_condition_fig, bar_relation_fig, bar_injury_fig
+
+
+# Update heat map
+@app.callback(
+    Output('crash-heat', component_property='figure'),
+    [
+        Input('cluster-dropdown', component_property='value'),
+        Input('collision-type', component_property='value'),
+        Input('road-condition', component_property='value'),
+        Input('illumination', component_property='value'),
+        Input('relation', component_property='value'),
+        Input('injury', component_property='value'),
+        Input('year-slider', component_property='value'),
+        Input('month-slider', component_property='value'),
+        Input('highlight-dropdown', component_property='value')
+    ],
+)
+def update_bar_and_heat(cluster_number, collision_type, 
+                        road_condition, illumination, relation, 
+                        injury, year_range, month_range, 
+                        highlight):
+
+    df = get_data(cluster_number, collision_type, road_condition, illumination, relation, 
+                  injury, year_range, month_range, highlight)
+    
+    day_hour_heatmap = generate_heatmap(df)
+    
+    if day_hour_heatmap.shape[0] < 7 or day_hour_heatmap.shape[1] < 2:
+        heat_fig = FIG_NONE 
+    else: 
+        heat_fig = px.imshow(day_hour_heatmap,
+                             labels=dict(x="Time of Day", y="Day of Week", color='# of Accidents'),
+                             x=[str(int(x[1])) for x in day_hour_heatmap.columns.values],
+                             y=list(map(day_dict.get, day_hour_heatmap.index.values))
+                            )
+
+        heat_fig.update_layout(
+            margin=dict(l=20, r=20, t=20, b=20)
+        )
+    
+    return heat_fig
 
 # Run app
 if __name__ == '__main__':
