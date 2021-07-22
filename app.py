@@ -628,29 +628,24 @@ def update_bar(cluster_number, collision_type,
         
     bar_illum_fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        yaxis=dict(tickfont=dict(size=10))
+        xaxis=dict(tickfont=dict(size=10))
     )
-    bar_illum_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     bar_collision_fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        yaxis=dict(tickfont=dict(size=10))
+        xaxis=dict(tickfont=dict(size=10))
     )
-    bar_collision_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     bar_condition_fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        yaxis=dict(tickfont=dict(size=10)),
+        xaxis=dict(tickfont=dict(size=10)),
     )
-    bar_condition_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     bar_relation_fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        yaxis=dict(tickfont=dict(size=10)),
+        xaxis=dict(tickfont=dict(size=10)),
     )
-    bar_relation_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     bar_injury_fig.update_layout(
         margin=dict(l=20, r=20, t=20, b=20),
-        yaxis=dict(tickfont=dict(size=10))
+        xaxis=dict(tickfont=dict(size=10))
     )
-    bar_injury_fig.layout.height = MAP_PANEL_HEIGHT*1.5
     
     return bar_illum_fig, bar_collision_fig, bar_condition_fig, bar_relation_fig, bar_injury_fig
 
