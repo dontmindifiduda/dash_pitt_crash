@@ -147,7 +147,9 @@ final_features = [
     'AGGRESSIVE_DRIVING',
     'CURVED_ROAD',
     'RUNNING_RED_LT',
-    'TAILGATING'
+    'TAILGATING',
+    'DEC_LAT',
+    'DEC_LONG'
 ]
 
 cat_crash_df = cat_crash_df[final_features]
