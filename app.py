@@ -226,6 +226,11 @@ controls = dbc.Card(
                         {'label': 'Impaired Driver', 'value': 'IMPAIRED_DRIVER'},
                         {'label': 'Distracted Driver', 'value': 'DISTRACTED'},
                         {'label': 'Fatigue / Asleep', 'value': 'FATIGUE_ASLEEP'},
+                        {'label': 'Tailgating', 'value': 'TAILGATING'},
+                        {'label': 'Speeding', 'value': 'SPEEDING_RELATED'},
+                        {'label': 'Aggressive Driving', 'value': 'AGGRESSIVE_DRIVING'},
+                        {'label': 'Running a Red Light', 'value': 'RUNNING_RED_LT'},
+                        {'label': 'Curved Road', 'value': 'CURVED_ROAD'},
                     ],
                     value=0,
                     multi=False

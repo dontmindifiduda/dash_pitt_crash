@@ -110,8 +110,50 @@ cat_crash_df.loc[cat_crash_df['MODERATE_INJURY'] == 1, 'MAX_INJURY_SEVERITY'] = 
 cat_crash_df.loc[cat_crash_df['MAJOR_INJURY'] == 1, 'MAX_INJURY_SEVERITY'] = 3
 cat_crash_df.loc[cat_crash_df['FATAL'] == 1, 'MAX_INJURY_SEVERITY'] = 4
 
-### Save dataframe
 
+### Filter for features that will be used by the dashboard app
+final_features = [
+    'CRASH_CRN',
+    'CRASH_YEAR',
+    'CRASH_MONTH',
+    'DAY_OF_WEEK',
+    'HOUR_OF_DAY',
+    'ILLUMINATION',
+    'ROAD_CONDITION',
+    'COLLISION_TYPE',
+    'RELATION_TO_ROAD',
+    'KMODE_CLUSTER',
+    'MAX_INJURY_SEVERITY',
+    'INTERSTATE',
+    'STATE_ROAD',
+    'LOCAL_ROAD',
+    'WORK_ZONE_IND',
+    'SCH_ZONE_IND',
+    'MOTORCYCLE',
+    'BICYCLE',
+    'PEDESTRIAN',
+    'HVY_TRUCK_RELATED',
+    'HAZARDOUS_TRUCK',
+    'ALCOHOL_RELATED',
+    'DEER_RELATED',
+    'DRUG_RELATED',
+    'UNLICENSED',
+    'UNBELTED',
+    'DISTRACTED',
+    'CURVED_ROAD',
+    'IMPAIRED_DRIVER',
+    'FATIGUE_ASLEEP',
+    'SPEEDING_RELATED',
+    'AGGRESSIVE_DRIVING',
+    'CURVED_ROAD',
+    'RUNNING_RED_LT',
+    'TAILGATING'
+]
+
+cat_crash_df = cat_crash_df[final_features]
+
+
+### Save dataframe
 cat_crash_df.to_csv('data/clean-crash-data.csv', index=False)
 
 
